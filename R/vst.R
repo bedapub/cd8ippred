@@ -28,3 +28,13 @@ compute_vst <- function(matr) {
   vsd <- DESeq2::varianceStabilizingTransformation(object, blind = FALSE)
   SummarizedExperiment::assay(vsd)
 }
+
+#' Dispersion function generated on the training dataset.
+#' @keywords internal
+cd8ip_vst_dispersion_f <- function(q) {
+  coefs <- c(
+    asymptDisp = 0.399787303881163,
+    extraPois = 61.2781484625878
+  )
+  coefs[1] + coefs[2]/q
+}
