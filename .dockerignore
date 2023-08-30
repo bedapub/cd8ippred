@@ -1,0 +1,12 @@
+.Rproj.user
+inst/doc/
+.git
+.gitlab-ci.yml
+
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/sandbox/
+renv/staging/

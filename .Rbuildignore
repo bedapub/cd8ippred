@@ -1,0 +1,16 @@
+^renv$
+^renv\.lock$
+^cd8ippred\.Rproj$
+^\.Rproj\.user$
+^LICENSE\.md$
+
+# gitlab ci files and directories
+^ci$
+^\.gitlab-ci\.yml$
+
+^\.dockerignore$
+^\.renvignore$
+
+^Dockerfile$
+^docs$
+^README\.Rmd$

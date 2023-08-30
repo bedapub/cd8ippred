@@ -1,0 +1,137 @@
+---
+title: "Predict CD8 immune phenotypes"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Predict CD8 immune phenotypes}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(cd8ippred)
+library(Biobase)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
+
+This is an example of how to apply CD8 immune phenotype model to data.
+
+**Warning**: Only apply this to RNA-Seq data processed with Roche-internal
+RNA-Seq pipeline (e.g., processed EDIS data).
+When in doubt, compare your data distribution to the example data.
+
+We are using simulated data sampled from the training set.
+First we need Variance-stabilizing transformation.
+
+```{r "vst transformation"}
+data("cd8ip_simulated_counts")
+vst_m <- compute_vst(exprs(cd8ip_simulated_counts))
+```
+
+Create a `data.frame`.
+```{r}
+# set rownames to symbol names where available;
+# the model uses only a subset of genes with symbols available.
+rownames(vst_m) <- ifelse(
+    is.na(fData(cd8ip_simulated_counts)$symbol) | fData(cd8ip_simulated_counts)$symbol == "",
+    rownames(vst_m),
+    fData(cd8ip_simulated_counts)$symbol
+)
+
+# make rownames unqiue; the model uses only a subset of genes
+# without symbol duplication issues
+rownames(vst_m) <- make.names(rownames(vst_m), unique = TRUE)
+
+# transform to a data.frame()
+vst_df <- as.data.frame(t(vst_m))
+# data preview
+vst_df[1:6, 1:6]
+```
+
+Predict immune phenotypes
+```{r}
+pred <- predict_cd8ip(vst_df)
+pred$truth <- cd8ip_simulated_counts$CD8IMMPH |>
+  tolower() |>
+  # we convert truth to a factor for yardstick ROC computations
+  factor()
+```
+
+Prediction quality
+```{r}
+# values above 6 should be interpreted with caution
+summary(pred$n_out_of_range)
+
+# low-confidence predictions are set to NA
+summary(is.na(pred$predicted.class))
+```
+
+## Confusion matrix
+```{r "confusion matrix"}
+with(
+  pred,
+  table(truth, predicted.class)
+)
+```
+
+View data.frame with predictions
+```{r "predictions"}
+head(pred)
+```
+
+## AUC scores
+Please note, this is **not real data**. These AUC scores are only an example.
+
+```{r "AUC data.frame"}
+auc_df <- pred |>
+  filter(!is.na(truth)) |>
+  pivot_longer(starts_with("prob."), names_prefix = "prob.", names_to = ".level", values_to = "prob") |>
+  mutate(positive = as.factor(truth == .level)) |>
+  group_by(.level) |>
+  yardstick::roc_auc(positive, prob, event_level = "second") |>
+  rename(AUC = .estimate, class = .level) |>
+  select(class, AUC) %>%
+  mutate(AUC_text = paste0("AUC=", round(AUC, 3)))
+
+select(auc_df, -AUC_text)
+```
+
+
+ROC curve
+```{r "plot ROC", fig.width=5, fig.height=4}
+pheno_col <- c(
+  inflamed = "#d95f02",
+  excluded = "#1b9e77",
+  desert = "#7570b3"
+)
+
+pred |>
+  filter(!is.na(truth)) |>
+  # column names should match levels of the truth factor
+  yardstick::roc_curve(truth, all_of(paste0("prob.", levels(pred$truth)))) |>
+  mutate(class = .level) |>
+  ggplot() +
+  aes(x = 1 - specificity, y = sensitivity, col = class) +
+  geom_path() +
+  geom_abline(lty = 3) +
+  coord_equal() +
+  geom_text(aes(label = AUC_text), x = 0.55, y = 0.1, data = auc_df, show.legend = FALSE) +
+  facet_wrap(~class, ncol = 2) +
+  scale_color_manual(values = pheno_col) +
+  theme_bw()
+```
+
+<details>
+<summary>Session info</summary>
+```{r "session info"}
+devtools::session_info()
+```
+</details>
