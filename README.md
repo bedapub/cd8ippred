@@ -25,6 +25,7 @@ You can install the development version of cd8ippred like so:
 remotes::install_github("bedapub/cd8ippred")
 ```
 
-## Usage and examples
+## Usage example
 
-See [here](https://bedapub.github.io/cd8ippred/).
+See
+[here](https://bedapub.github.io/cd8ippred/articles/cd8_ip_predict.html).
