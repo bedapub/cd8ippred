@@ -10,6 +10,6 @@ load_simulated_counts <- function() {
   Biobase::ExpressionSet(
     assayData = cd8ip_simulated_counts_exprs,
     phenoData = Biobase::AnnotatedDataFrame(cd8ip_simulated_counts_pdata),
-    featureData = cd8ip_simulated_counts_fdata
+    featureData = Biobase::AnnotatedDataFrame(cd8ip_simulated_counts_fdata)
   )
 }
