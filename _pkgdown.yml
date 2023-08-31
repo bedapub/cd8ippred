@@ -1,4 +1,8 @@
 url: https://bedapub.github.io/cd8ippred/
 template:
   bootstrap: 5
-
+authors:
+  footer:
+    roles: [cre, ctb, fnd]
+  sidebar:
+    roles: [cre, ctb, fnd]
