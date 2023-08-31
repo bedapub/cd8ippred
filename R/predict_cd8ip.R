@@ -90,7 +90,7 @@ predict_cd8ip <- function(df) {
             "training range. Interpret results with caution.")
   }
   pred <- stats::predict(
-    cd8ip_model,
+    model_env$cd8ip_model,
     newx = m, type = "response"
   )[, , 1]
 
@@ -98,7 +98,7 @@ predict_cd8ip <- function(df) {
   pred <- as.data.frame(pred)
 
   pred$predicted.class <- stats::predict(
-    cd8ip_model,
+    model_env$cd8ip_model,
     newx = m, type = "class"
   )[, 1]
 

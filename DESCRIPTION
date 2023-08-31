@@ -27,6 +27,7 @@ Imports:
     Biobase,
     DESeq2,
     glmnet,
+    Matrix,
     SummarizedExperiment
 Depends: 
     R (>= 4.1)
