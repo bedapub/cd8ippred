@@ -15,6 +15,7 @@
         )
       )
       dimnames(m) <- cd8ip_model_beta_dimnames
+      m
     },
     simplify = FALSE,
     USE.NAMES = TRUE
