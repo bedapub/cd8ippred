@@ -4,6 +4,8 @@
 # cd8ippred
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/bedapub/cd8ippred/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bedapub/cd8ippred/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This package contains an ElasticNet model which can use RNA-Seq data to
