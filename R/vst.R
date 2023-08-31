@@ -32,9 +32,15 @@ compute_vst <- function(matr) {
 #' Dispersion function generated on the training dataset.
 #' @keywords internal
 cd8ip_vst_dispersion_f <- function(q) {
-  coefs <- c(
-    asymptDisp = 0.399787303881163,
-    extraPois = 61.2781484625878
-  )
-  coefs[1] + coefs[2]/q
+  cd8ip_vst_dispersion_coefs[1] + cd8ip_vst_dispersion_coefs[2]/q
 }
+# make sure all the attributes of the dispersion function are
+# properly set
+attributes(cd8ip_vst_dispersion_f) <- list(
+  coefficients = c(
+    asymptDisp = 0.399787303881163, extraPois = 61.2781484625878
+  ),
+  fitType = "parametric",
+  varLogDispEsts = 1.03303499865745
+)
+cd8ip_vst_dispersion_coefs <- attr(cd8ip_vst_dispersion_f, "coefficients")
