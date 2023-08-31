@@ -43,3 +43,4 @@ Suggests:
     devtools
 VignetteBuilder: knitr
 biocViews:
+URL: https://bedapub.github.io/cd8ippred/
