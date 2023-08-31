@@ -6,7 +6,7 @@
 \title{A \link{data.frame} with feature distribution simulated from kernel-density
 estimates based on the training data.}
 \format{
-An object of class \code{tbl_df} (inherits from \code{tbl}, \code{data.frame}) with 100000 rows and 92 columns.
+An object of class \code{data.frame} with 100000 rows and 92 columns.
 }
 \usage{
 cd8ip_features_distribution
