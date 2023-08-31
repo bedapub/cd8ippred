@@ -62,7 +62,7 @@
 <div class="page-header"><h1 id="cd8ippred">cd8ippred<a class="anchor" aria-label="anchor" href="#cd8ippred"></a>
 </h1></div>
 <!-- badges: start -->
-<!-- badges: end -->
+
 <p>This package contains an ElasticNet model which can use RNA-Seq data to predict immune phenotypes of the samples.</p>
 <p><strong>Warning</strong>: RNA-Seq expression values can be strongly affected by both the experimental protocol and the data processing. Before running the prediction make sure that your data is comparable to data used in the training dataset. A simple way to check is to compare your data to <code><a href="reference/load_simulated_counts.html">load_simulated_counts()</a></code>.</p>
 <div class="section level2">
@@ -73,9 +73,9 @@
 <code class="sourceCode R"><span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"bedapub/cd8ippred"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="usage-and-examples">Usage and examples<a class="anchor" aria-label="anchor" href="#usage-and-examples"></a>
+<h2 id="usage-example">Usage example<a class="anchor" aria-label="anchor" href="#usage-example"></a>
 </h2>
-<p>See <a href="https://bedapub.github.io/cd8ippred/">here</a>.</p>
+<p>See <a href="https://bedapub.github.io/cd8ippred/articles/cd8_ip_predict.html">here</a>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="license">
@@ -98,12 +98,18 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Iakov I. Davydov <br><small class="roles"> Author, maintainer, copyright holder </small> <a href="https://orcid.org/0000-0003-3510-3926" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Martha Serrano <br><small class="roles"> Contributor, copyright holder </small>  </li>
+<li>Petra Schwalie <br><small class="roles"> Contributor, copyright holder </small>  </li>
 <li>F. Hoffman-La Roche <br><small class="roles"> Copyright holder, funder </small>  </li>
-<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 
-
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/bedapub/cd8ippred/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/bedapub/cd8ippred/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
+</ul>
+</div>
 
   </aside>
 </div>
@@ -111,7 +117,7 @@
 
     <footer><div class="pkgdown-footer-left">
   <p></p>
-<p>Developed by Iakov I. Davydov, F. Hoffman-La Roche.</p>
+<p>Developed by Iakov I. Davydov, Martha Serrano, Petra Schwalie, F. Hoffman-La Roche.</p>
 </div>
 
 <div class="pkgdown-footer-right">
