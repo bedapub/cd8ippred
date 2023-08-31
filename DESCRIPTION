@@ -1,6 +1,6 @@
 Package: cd8ippred
 Title: Predict CD8 immune phenotypes based on the RNA-Seq data
-Version: 0.0.2
+Version: 0.1.0
 Authors@R: c(
     person(given = c(first = "Iakov", middle = "I."),
            family = "Davydov",
