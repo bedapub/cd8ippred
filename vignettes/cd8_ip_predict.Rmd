@@ -32,7 +32,7 @@ We are using simulated data sampled from the training set.
 First we need Variance-stabilizing transformation.
 
 ```{r "vst transformation"}
-data("cd8ip_simulated_counts")
+cd8ip_simulated_counts <- load_simulated_counts()
 vst_m <- compute_vst(exprs(cd8ip_simulated_counts))
 ```
 

@@ -3,5 +3,5 @@
 export(compute_vst)
 export(ecdf_pvals)
 export(get_n_out_of_range)
+export(load_simulated_counts)
 export(predict_cd8ip)
-importFrom(Biobase,ExpressionSet)
