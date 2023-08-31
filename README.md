@@ -13,7 +13,7 @@ predict immune phenotypes of the samples.
 the experimental protocol and the data processing. Before running the
 prediction make sure that your data is comparable to data used in the
 training dataset. A simple way to check is to compare your data to
-`data("cd8ip_simulated_counts")`.
+`load_simulated_counts()`.
 
 ## Installation
 
