@@ -6,3 +6,8 @@ authors:
     roles: [cre, ctb, fnd]
   sidebar:
     roles: [cre, ctb, fnd]
+repo:
+  url:
+    home: https://github.com/BEDApub/cd8ippred
+    source: https://github.com/BEDApub/cd8ippred/tree/main/
+    issue: https://github.com/BEDApub/cd8ippred/issues/
